@@ -1,0 +1,70 @@
+spring:
+  profiles:
+    active:
+    - dev
+ --
+server:
+  port: 7003
+spring:
+  profiles: dev
+  application:
+      name: sso-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/bms03?setUnicode=true&characterEncoding=utf-8
+    username: root
+    password: xc7202399
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+eureka:
+  client:
+    service-url: #客户端注册进eureka服务列表内
+      defaultZone: http://eureka8001.com:8001/eureka/,http://eureka8002.com:8002/eureka/,http://eureka8002.com:8002/eureka/
+  instance:
+    instance-id: BBS-SSO-7003   #自定义hystrix相关的服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+info:
+    app.name: BBS-7003
+    company.name: www.bwf.com
+    build.artifactId: $project.artifactId$
+    build.version: $project.version$
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+--
+server:
+  port: 7004
+spring:
+  profiles: test
+  application:
+      name: sso-service-test
+  datasource:
+    url: jdbc:mysql://localhost:3306/bms02?setUnicode=true&characterEncoding=utf-8
+    username: root
+    password: xc7202399
+    type: com.alibaba.druid.pool.DruidDataSource
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+eureka:
+  client:
+    service-url: #客户端注册进eureka服务列表内
+      defaultZone: http://eureka8001.com:8001/eureka/,http://eureka8002.com:8002/eureka/,http://eureka8002.com:8002/eureka/
+  instance:
+    instance-id: BBS-SSO-7003-TEST   #自定义hystrix相关的服务名称信息
+    prefer-ip-address: true     #访问路径可以显示IP地址
+info:
+    app.name: BBS-7003-test
+    company.name: www.bwf.com
+    build.artifactId: $project.artifactId$
+    build.version: $project.version$
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
