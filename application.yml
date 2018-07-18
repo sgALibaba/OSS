@@ -2,7 +2,7 @@ spring:
   profiles:
     active:
     - dev
---
+---
 server:
   port: 7003
 spring:
@@ -35,7 +35,7 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
---
+---
 server:
   port: 7004
 spring:
